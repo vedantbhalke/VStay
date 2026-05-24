@@ -32,7 +32,10 @@ main()
     });
 
 async function main() {
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect(MONGO_URL, {
+        serverSelectionTimeoutMS: 30000,
+        socketTimeoutMS: 45000,
+    });
 }
 
 app.set("view engine", "ejs");
